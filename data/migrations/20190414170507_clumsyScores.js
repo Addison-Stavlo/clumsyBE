@@ -8,5 +8,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists("clumsyScores");
+  return knex.schema.dropTableIfExists("clumsy_scores");
 };
