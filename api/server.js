@@ -17,7 +17,7 @@ server.get("/", (req, res) => {
 
 server.get("/arcadeScores/clumsyScore", async (req, res) => {
   try {
-    let scores = await db("clumsy_scores").orderBy("score");
+    let scores = await db("clumsy_scores").orderBy("score", "desc");
     res.status(200).json(scores);
   } catch (err) {
     console.log(err);
@@ -33,7 +33,7 @@ server.post("/arcadeScores/clumsyScore", async (req, res) => {
         let score = req.body.score;
         let newScore = { name, score };
         await db("clumsy_scores").insert(newScore);
-        let scores = await db("clumsy_scores").orderBy("score");
+        let scores = await db("clumsy_scores").orderBy("score", "desc");
         res.status(200).json(scores);
       }
     } else {
