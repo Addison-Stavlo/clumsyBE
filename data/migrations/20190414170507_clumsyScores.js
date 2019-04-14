@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable("clumsyScores", tbl => {
+  return knex.schema.createTable("clumsy_scores", tbl => {
     tbl.increments();
     tbl.string("name");
     tbl.float("score");
