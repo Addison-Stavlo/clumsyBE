@@ -13,7 +13,7 @@ server.use(morgan("short"));
 
 server.get("/arcadeScores/clumsyScore", async (req, res) => {
   try {
-    let scores = await db("clumsyScores").orderBy("score");
+    let scores = await db("clumsyScores");
     res.status(200).json(scores);
   } catch (err) {
     res.status(500).json({ message: "error!", error: err });
@@ -28,7 +28,7 @@ server.post("/arcadeScores/clumsyScore", async (req, res) => {
         let score = req.body.score;
         let newScore = { name, score };
         await db("clumsyScores").insert(newScore);
-        let scores = await db("clumsyScores").orderBy("scores");
+        let scores = await db("clumsyScores").orderBy("score");
         res.status(200).json(scores);
       }
     } else {
